@@ -2,16 +2,21 @@ version: '3'
 services:
   proxy:
     build: ./
+    container_name: reverseproxy
     networks:
       - site1
       - site2
     ports:
       - 80:80
+      #- 433:433
+    networks:
+      - site1
+      - site2
 
 networks:
   site1:
     external:
-      name: site1_default
+      name: site1-network
   site2:
     external:
-      name: site2_default
+      name: site2-network
