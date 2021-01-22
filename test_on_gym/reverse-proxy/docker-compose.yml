@@ -1,0 +1,21 @@
+version: '3'
+ 
+services:
+  rp:
+    container_name: rp
+    image: nginx:1.19.6
+    ports:
+      - 80:80
+      #- 443:443
+    volumes:
+      # configuration files
+      - ./config/nginx:/etc/nginx
+      # SSL certificates
+      # - ./certs:/etc/ssl/private
+    networks:
+      - ghs1
+
+networks:
+  ghs1:
+    external:
+      name: ghs1-network
